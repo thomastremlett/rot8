@@ -81,3 +81,31 @@ There are the following args (defaults):
 ```
 
 You may need to play with the normalization factor (try multiples of 10) and the axis inversions to get the accelerometer readings to calculate right.
+
+## Hooks
+
+calls a hookscript with the orientation of the display
+Still need to make this more universal
+
+/home/tremo/.config/rot8
+
+```
+#!/bin/sh
+
+case "$1" in
+	normal)
+		notify-send "normal"
+		;;
+	inverted)
+		notify-send "inverted"
+		;;
+	left)
+		notify-send "left"
+		;;
+	right)
+		notify-send "right"
+		;;
+	*) echo "$1" ;;
+esac
+
+```

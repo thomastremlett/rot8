@@ -1,6 +1,7 @@
 extern crate clap;
 extern crate glob;
 extern crate regex;
+extern crate dirs;
 
 use std::fs;
 use std::path::Path;
@@ -391,6 +392,7 @@ fn main() -> Result<(), String> {
                             .wait()
                             .expect("Xrandr rotate command wait failed");
 
+        
                         // Support Touchscreen and Styli on some 2-in-1 devices
                         for touchscreen in &touchscreens {
                             Command::new("xinput")
@@ -402,7 +404,18 @@ fn main() -> Result<(), String> {
                                 .expect("Xinput rotate command failed to start")
                                 .wait()
                                 .expect("Xinput rotate command wait failed");
+
+                        
                         }
+
+                        Command::new("sh")
+                            .arg("/home/tremo/.config/rot8")
+                            .arg(x_state)
+                            .spawn()
+                            .expect("No such file or directory")
+                            .wait()
+                            .expect("Sh rotate command wait failed");
+
                     }
                 }
                 old_state = new_state;

@@ -1,5 +1,8 @@
 # rot8
 
+Just a small fork to add a rotation hook, useful for my x1 yoga gen6
+
+
 ## automatic display rotation using built-in accelerometer
 
 Automatic rotate modern Linux desktop screen and input devices. Handy for
